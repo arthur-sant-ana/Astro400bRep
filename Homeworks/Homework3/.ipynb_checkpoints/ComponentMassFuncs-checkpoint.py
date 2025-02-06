@@ -70,9 +70,9 @@ def MassFrame(filename_list):
 
     #Renaming the columns so that they have the correct
     #units
-    df.columns = (['Galaxy Name' , f'Halo Mass ({10**12*u.Msun:.0e})', 
-                                 f'Disk Mass ({10**12*u.Msun:.0e})', 
-                                f'Bulge Mass ({10**12*u.Msun:.0e})', 
-                                 f'Sum ({10**12*u.Msun:.0e})', 
-                                 f'Fraction ({10**12*u.Msun:.0e})'])
+    df.columns = (['Galaxy Name' , r'Halo Mass ($10^{12} M_{\odot}$)', 
+                                 r'Disk Mass ($10^{12} M_{\odot}$)', 
+                                r'Bulge Mass ($10^{12} M_{\odot}$)', 
+                                 r'Sum ($10^{12} M_{\odot}$)', 
+                                 r'Fraction ($10^{12} M_{\odot}$)'])
     return df
