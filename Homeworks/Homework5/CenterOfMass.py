@@ -1,11 +1,5 @@
-
-
 # Homework 4
-# Center of Mass Position and Velocity
-#  Solutions: G. Besla, R. Li, H. Foote
-
-
-
+#Arthur Sant'Ana
 # import modules
 import numpy as np
 import astropy.units as u
@@ -244,59 +238,6 @@ class CenterOfMass:
         # set the correct units using astropy
         # round all values
         return np.round(v_COM, 2)*u.km/u.s
-    
-
-
-# ANSWERING QUESTIONS
-#######################
-if __name__ == '__main__' : 
-
-
-    # Create  a Center of mass object for the MW, M31 and M33                                                              
-    MW_COM = CenterOfMass("MW_000.txt", 2)
-    M31_COM = CenterOfMass("M31_000.txt", 2)
-    M33_COM = CenterOfMass("M33_000.txt", 2)
-
-    # find and print the COM positions in phase-space for each galaxy
-
-    # MW 
-    MW_COM_p = MW_COM.COM_P(0.1)
-    MW_COM_v = MW_COM.COM_V(MW_COM_p[0],MW_COM_p[1],MW_COM_p[2])
-    print('MW COM xyz position:', MW_COM_p, 'and xyz velocity:', MW_COM_v)
-
-    # M31 
-    M31_COM_p = M31_COM.COM_P(0.1)
-    M31_COM_v = M31_COM.COM_V(M31_COM_p[0],M31_COM_p[1],M31_COM_p[2])
-    print('M31 COM xyz position:', M31_COM_p, 'and xyz velocity:', M31_COM_v)
-
-    # M33 
-    M33_COM_p = M33_COM.COM_P(0.1)
-    M33_COM_v = M33_COM.COM_V(M33_COM_p[0],M33_COM_p[1],M33_COM_p[2])
-    print('M33 COM xyz position:', M33_COM_p, 'and xyz velocity:', M33_COM_v)
-
-
-    # Q2 
-    # Determine the separation between the MW and M31                                                                      
-    MW_M31 = np.sqrt((M31_COM_p[0]-MW_COM_p[0])**2 + (M31_COM_p[1]-MW_COM_p[1])**2 + (M31_COM_p[2]-MW_COM_p[2])**2)
-    print("Separation between the MW and M31 =", np.round(MW_M31))
-
-    # Determine the relative velocity between the MW and M31                                                                      
-    vMW_M31 = np.sqrt((M31_COM_v[0]-MW_COM_v[0])**2 + (M31_COM_v[1]-MW_COM_v[1])**2 + (M31_COM_v[2]-MW_COM_v[2])**2)
-    print("Relative Velocity between the MW and M31 =", np.round(vMW_M31))
-
-
-    # Q3
-    # Determine the relative position between M33 and M31                                                                  
-    M33_M31 = np.sqrt((M33_COM_p[0]-M31_COM_p[0])**2 + (M33_COM_p[1]-M31_COM_p[1])**2 + (M33_COM_p[2]-M31_COM_p[2])**2)
-    print("Relative Position between M33 and M31 = ", np.round(M33_M31))
-
-
-    # Determine the relative velocity between M33 and M31                                                                  
-    vM33_M31 = np.sqrt((M33_COM_v[0]-M31_COM_v[0])**2 + (M33_COM_v[1]-M31_COM_v[1])**2 + (M33_COM_v[2]-M31_COM_v[2])**2)
-    print("Relative Velocity between M33 and M31 = ", np.round(vM33_M31))
-
-
-    # Q4:  The iterative procedue is necessary because as galaxies interact their stars get thrown to large radii with different speeds. Tidal tails are not spherically symmetric; this can cause the COM position calculation to be really off if you are using all the particles at large radii. 
 
 
 
