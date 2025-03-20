@@ -218,17 +218,18 @@
 
 \section{Introduction} \label{sec:introduction}
 
-For the most prominent model on how galaxies evolve, the standard $\Lambda$CDM cosmology, galaxies form and evolve via a series of mergers with neighboring smaller star systems \citep{Johnston2008-bz}. One of the resulting factors in these mergers are coherent streams of stars that are stripped from their original host by the stronger tidal forces from the larger galaxy \citep{Jensen2021-mw}. As such, the existence of such streams hints at the scenario in which galaxies evolve via merging, and the dynamics of such objects may reveal crucial information on the history of a given galaxy.
+For the most prominent model on how galaxies evolve, the standard $\Lambda$CDM cosmology, galaxies form and evolve via a series of mergers with neighboring smaller star systems \citep{Johnston2008-bz}. One of the predicted resulting factors in these mergers are coherent streams of stars that are stripped from their original host by the stronger tidal forces from the larger galaxy \citep{Jensen2021-mw}. As such, the existence of such streams hints at the scenario in which galaxies evolve via merging, and the dynamics of such objects may reveal crucial information on the history of a given galaxy.
 
 Considering the distance these streams generally are from the galactic center, their dynamical timescales are much longer, which allows us to peer into past conditions of this system, forming something akin to a "fossil record" for past mergers of a specific galaxy \citep{Johnston1996-uv}. Thus, studying these streams' dynamics is deeply beneficial to understanding how galaxies evolve and can even provide insight on how different kinds of mergers affect the resulting galaxy, strengthening or weakening the $\Lambda$CDM framework. Furthermore, it has been discussed that measuring the amounts of stellar streams a galaxy has can put a lower limit to past merging events and also present indirect evidence for the existence of dark matter sub-haloes \citep{Malhan2018-mh}.
 
-At this point in time, as Jensen et al.(2021) evidences, we are getting access to revolutionary amounts of observational data concerning galactic structures, which includes cataloging Milky Way's stellar streams \citep{Malhan2018-mh}\ref{fig:general}. This revolution also comes in the form of deeply detailed simulations aiming at describing the behaviors of such streams and justifying the observations we are gathering \citep{Choi2007-lc}.
+At this point in time, as \cite{Jensen2021-mw} evidences, we are getting access to revolutionary amounts of observational data concerning galactic structures, which includes cataloging Milky Way's stellar streams (Figure \ref{fig:general}). This revolution also comes in the form of deeply detailed simulations aiming at describing the behaviors of such streams and justifying the observations we are gathering \citep{Choi2007-lc}.
 
 %% The "ht!" tells LaTeX to put the figure "here" first, at the "top" next
 %% and to override the normal way of calculating a float position.
 %% The asterisk after "figure" tells the compiler to span multiple columns
 %% if a two column style is selected.
 \begin{figure*}[ht!]
+\epsscale{0.65}
 \plotone{Stellarstream2.jpeg}
 \caption{Chart demonstrating potential stream stars identified in \citep{Malhan2018-mh}. This evidences the astounding capability we have to identify these objects, however this only accounts for a small portion of all stream stars.}
 \label{fig:general}
@@ -247,22 +248,33 @@ The aim within this project is going to be to better describe the stellar stream
 
 \subsection{Methods}
 
-In order to achieve such goals many of the functions devised during classes and labs will be used. First the relevant snap shots from the simulation will be selected. In this case snap shots before and after each MW-M31 interaction will be the most useful, so around ~3.8 Gyr ("M33$\_$260.txt"), ~4.2 Gyr ("M33$\_$300") and ~5.9 Gyr ({"M33$\_$420"}). Since stars are being addressed, only disk particles will be used.
+To achieve such goals many of the functions devised during classes and labs will be used. First the relevant snap shots from the simulation will be selected. In this case snap shots before and after each MW-M31 interaction will be the most useful, so around 3.8 Gyr ("M33$\_$260.txt"), 5.9 Gyr ({"M33$\_$420"}) and beyond 6.5 Gyr ("M33$\_$460"). Since stars are being addressed, only disk particles will be used. These points of interest can be clearly seen using the separation plot devised in Homework 6.
+\begin{figure*}[h!]
+\epsscale{0.7}
+\plotone{MW_M31_M33_Sep.png}
+\caption{Plot devised in Homework 6, which indicates the separation of objects thorughout the timeframe of the MW-M31 merger.}
+\label{fig:general3}
+\end{figure*}
 
 Now we have to find which particles are not bound to M33 at each of these moments. In order to do that we will be using the "Jacobi Radius", which is defined as:
+
 \begin{equation}
     R_j = r*{(\frac{M_{sat}}{2M_{host}(<r)})}^{\frac{1}{3}}
 \end{equation}
+
 This equation takes in the mass of the satellite M33 ($M_{sat}$), the mass of the host MW+M31 ($M_{host}$) and $r$, which is the separation between these two.
 
 Both masses can be easily obtained directly from the "GalaxyMass.py" function created in Homework 3. The separation, however, will require some extra steps. The base code will come from Homework 6, where we used the "CenterOfMass" class and created the "orbitCOM" function in order to plot the separation between each object in terms of time. For this project we will be using "orbitCOM" in order to obtain the separation for a given time and plugging that into the Jacobi Radius formula.
 
-Then finally we will be able to use the code developed on Lab 7 to make contour plots of the velocity dispersion with the Jacobi radius being a condition, so only particles beyond the Jacobi radius will be shown in the plots, allowing us to clearly see the characteristics and how they change from time to time during the merging event. See Figure \ref{fig:general2} for reference.
-\begin{figure*}[ht!]
-\plotone{Untitled presentation.png}
+Then finally we will be able to use the code developed on Lab 7 to make contour plots of the velocity gradients and color coded scatter plots for the velocity dispersion. The Jacobi radius will be used as a condition, so only particles beyond the Jacobi radius will be shown in the plots, allowing us to clearly see the characteristics and how they change from time to time during the merging event. See Figure \ref{fig:general2} for reference.
+
+\begin{figure*}[h!]
+\plotone{DiagramRA.png}
 \caption{Diagram illustrating the steps that need to be taken in order to obtain velocity dispersion and gradient plots of particles located beyond the Jacobi radius (No longer bound by M33). In blue we can see more detailed explanations for how each function developed during an assignment will be used.
 \label{fig:general2}}
 \end{figure*}
+
+
 
 \subsection{Hyposthesis}
 
@@ -276,7 +288,7 @@ I believe that, as the merging event advances, M33 will lose a large amount of t
 %% bibtext sample7
 %% pdflatex sample7.tex
 %% pdflatex sample7.tex
-
+\newpage
 \bibliography{BibResearchAssi2}{}
 \bibliographystyle{aasjournalv7}
 
